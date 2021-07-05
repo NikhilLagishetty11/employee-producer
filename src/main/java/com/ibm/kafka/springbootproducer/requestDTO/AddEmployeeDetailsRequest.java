@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddEmployeeDetailsRequest {
 
+
     private String empId;
     private String firstName;
     private String lastName;

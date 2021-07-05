@@ -2,6 +2,7 @@ package com.ibm.kafka.springbootproducer.api;
 
 import com.ibm.kafka.springbootproducer.requestDTO.AddEmployeeDetailsRequest;
 import com.ibm.kafka.springbootproducer.requestDTO.DeleteEmployeeByIdRequest;
+import com.ibm.kafka.springbootproducer.requestDTO.Employee;
 import com.ibm.kafka.springbootproducer.requestDTO.UpdateEmployeeByIdRequest;
 
 import com.ibm.kafka.springbootproducer.service.EmployeeService;
@@ -27,7 +28,7 @@ public class EmployeeRestApi {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addEmployee(@RequestBody AddEmployeeDetailsRequest request) {
+    public String addEmployee(@RequestBody Employee request) {
         log.info("Entered the add Employee Request");
         if (!request.getEmail().isEmpty()) {
             request.setEmail(request.getEmail().toLowerCase());
@@ -38,21 +39,21 @@ public class EmployeeRestApi {
     }
 
     @PutMapping(value = "/update/{empId}")
-    public String updateEmployeeById(@PathVariable String empId, @RequestBody UpdateEmployeeByIdRequest request){
+    public String updateEmployeeById(@PathVariable String empId, @RequestBody Employee request){
         log.info("Entered the update Employee request");
         if (!request.getEmail().isEmpty()) {
             request.setEmail(request.getEmail().toLowerCase());
         }
         request.setEmpId(empId);
-        service.updateEmployeeById(empId, request);
+        service.updateEmployeeById(empId,request);
         return "Successfully updated employee Details";
     }
 
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public String deleteEmployeeById(@PathVariable DeleteEmployeeByIdRequest request){
+    @RequestMapping(value = "/delete/{empId}", method = RequestMethod.DELETE)
+    public String deleteEmployeeById(@PathVariable String empId){
         log.info("Entered the Delete Employee request");
-        service.deleteEmployeeById(request.getEmpId());
+        service.deleteEmployeeById(empId);
         return "Successfully deleted employee";
 
     }
