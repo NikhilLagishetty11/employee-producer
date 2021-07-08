@@ -17,6 +17,8 @@ public class EmployeeDetailsimpl implements EmployeeService {
 
     public static final String deleteEmployeeTopic = "delete_employee_topic";
 
+    public static final String updateEmployeeTopic = "update_employee_topic";
+
     @Autowired
     private KafkaTemplate<String, Employee>kafkaTemplate;
 
@@ -31,12 +33,12 @@ public class EmployeeDetailsimpl implements EmployeeService {
 
     public void updateEmployeeById(String empId, Employee request){
         log.info("entered the update employee details service");
-        this.kafkaTemplate.send(topic,empId,request);
+        this.kafkaTemplate.send(updateEmployeeTopic,empId,request);
 
     }
 
-    public  void deleteEmployeeById(String empId){
+    public  void deleteEmployeeById(String email){
         log.info("entered the delete employee service");
-        this.deleteEmployeeByIdKafkaTemplate.send(deleteEmployeeTopic,empId);
+        this.deleteEmployeeByIdKafkaTemplate.send(deleteEmployeeTopic,email);
     }
 }

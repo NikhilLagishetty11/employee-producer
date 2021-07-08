@@ -45,10 +45,10 @@ public class EmployeeRestApi {
     }
 
 
-    @RequestMapping(value = "/delete/{empId}", method = RequestMethod.DELETE)
-    public String deleteEmployeeById(@PathVariable String empId){
+    @RequestMapping(value = "/delete/{email}", method = RequestMethod.DELETE)
+    public String deleteEmployeeById(@PathVariable String email){
         log.info("Entered the Delete Employee request");
-        service.deleteEmployeeById(empId);
+        service.deleteEmployeeById(email);
         return "Successfully deleted employee";
 
     }

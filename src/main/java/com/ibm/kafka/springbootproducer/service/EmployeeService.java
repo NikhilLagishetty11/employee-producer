@@ -11,5 +11,5 @@ public interface EmployeeService {
 
     void updateEmployeeById(String empId, Employee request);
 
-    void deleteEmployeeById(String empId);
+    void deleteEmployeeById(String email);
 }
