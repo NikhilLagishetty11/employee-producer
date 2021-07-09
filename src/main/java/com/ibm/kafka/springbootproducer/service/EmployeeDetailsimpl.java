@@ -31,9 +31,9 @@ public class EmployeeDetailsimpl implements EmployeeService {
         this.kafkaTemplate.send(topic,request);
     }
 
-    public void updateEmployeeById(String empId, Employee request){
+    public void updateEmployeeById(Employee request){
         log.info("entered the update employee details service");
-        this.kafkaTemplate.send(updateEmployeeTopic,empId,request);
+        this.kafkaTemplate.send(updateEmployeeTopic,request);
 
     }
 

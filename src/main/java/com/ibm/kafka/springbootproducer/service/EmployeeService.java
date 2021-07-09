@@ -9,7 +9,7 @@ public interface EmployeeService {
 
     void addEmployeeDetails(Employee request);
 
-    void updateEmployeeById(String empId, Employee request);
+    void updateEmployeeById(Employee request);
 
     void deleteEmployeeById(String email);
 }

@@ -27,7 +27,6 @@ public class EmployeeRestApi {
         if (!request.getEmail().isEmpty()) {
             request.setEmail(request.getEmail().toLowerCase());
         }
-//        request.setEmpId("EmpID" +UUID.randomUUID().toString());
         service.addEmployeeDetails(request);
         return "Successfully added employee Details";
     }
@@ -39,7 +38,7 @@ public class EmployeeRestApi {
             request.setEmail(request.getEmail().toLowerCase());
         }
         request.setEmpId(empId);
-        service.updateEmployeeById(empId,request);
+        service.updateEmployeeById(request);
         return "Successfully updated employee Details";
     }
 
